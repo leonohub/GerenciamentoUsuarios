@@ -1,12 +1,12 @@
 package app.model;
 
-public class Usuario {
+public class User {
         private int id;
         int age;
         String name;
         String email;
 
-        public Usuario (int id, int age, String name, String email) {
+        public User (int id, int age, String name, String email) {
                 this.id = id;
                 this.age = age;
                 this.name = name;
