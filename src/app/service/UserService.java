@@ -17,4 +17,13 @@ public class UserService {
         static void delete (int id) {
                 users.removeIf(user -> user.getId() == id);
         }
+
+        static User search (int id){
+                for (User user : users) {
+                        if (id == user.getId()) {
+                                return user;
+                        }
+                }
+                return null;
+        }
 }
