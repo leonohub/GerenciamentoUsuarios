@@ -13,4 +13,8 @@ public class UserService {
                 User user = new User(id, age, name, email);
                 users.add(user);
         }
+        
+        static void delete (int id) {
+                users.removeIf(user -> user.getId() == id);
+        }
 }
