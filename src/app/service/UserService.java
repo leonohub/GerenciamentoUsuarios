@@ -26,4 +26,23 @@ public class UserService {
                 }
                 return null;
         }
+
+        static void update (int id, int age, String name, String email) {
+                for (User user : users) {
+                        if (id == user.getId()) {
+                                user.setAge(age);
+                                user.setEmail(email);
+                                user.setName(name);
+                        }
+                }
+        }
+
+        static void printUsers () {
+                for (User user : users) {
+                        System.out.println("User ID: " + user.getId());
+                        System.out.println("User AGE: " + user.getAge());
+                        System.out.println("User NAME: " + user.getName());
+                        System.out.println("User EMAIL: " + user.getEmail());
+                }
+        }
 }
