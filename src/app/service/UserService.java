@@ -6,43 +6,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
-
-        private static List<User> users = new ArrayList<>();
-
-        static void register (int id, int age, String name, String email) {
-                User user = new User(id, age, name, email);
-                users.add(user);
+        
+        static List<User> users = new ArrayList<>();
+        
+        public static List<User> listUsers () {
+                return users;
         }
         
-        static void delete (int id) {
-                users.removeIf(user -> user.getId() == id);
+        public static boolean register (User user) {
+                return users.add(user);
+        }
+        
+        public static boolean delete (int id) {
+                return users.removeIf(user -> user.getId() == id);
         }
 
-        static User search (int id){
+        
+        public static boolean update (int id, int age, String name, String email) {
+                for (User user : users) {
+                        if (id == user.getId()) {
+                                user.setAge(age);
+                                user.setEmail(email);
+                                user.setName(name);
+                                return true;
+                        }
+                }
+                return false;
+        }
+
+        public static User search (int id){
                 for (User user : users) {
                         if (id == user.getId()) {
                                 return user;
                         }
                 }
                 return null;
-        }
-
-        static void update (int id, int age, String name, String email) {
-                for (User user : users) {
-                        if (id == user.getId()) {
-                                user.setAge(age);
-                                user.setEmail(email);
-                                user.setName(name);
-                        }
-                }
-        }
-
-        static void printUsers () {
-                for (User user : users) {
-                        System.out.println("User ID: " + user.getId());
-                        System.out.println("User AGE: " + user.getAge());
-                        System.out.println("User NAME: " + user.getName());
-                        System.out.println("User EMAIL: " + user.getEmail());
-                }
         }
 }
